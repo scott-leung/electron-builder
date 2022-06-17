@@ -1,5 +1,11 @@
 ## 4.3.0
 
+## 5.1.0
+
+### Minor Changes
+
+- [#6941](https://github.com/electron-userland/electron-builder/pull/6941) [`14503ceb`](https://github.com/electron-userland/electron-builder/commit/14503ceb99c1a31c54a261a1ae60a34980f36a50) Thanks [@ezekg](https://github.com/ezekg)! - Upgrade Keygen publisher/updater integration to API version v1.1.
+
 ## 5.0.6
 
 ### Patch Changes

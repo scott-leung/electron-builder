@@ -1,3 +1,12 @@
+# [](https://github.com/electron-userland/electron-builder/compare/v23.2.0...v) (2022-06-17)
+
+
+### Features
+
+* upgrade keygen integration to v1.1 ([#6941](https://github.com/electron-userland/electron-builder/issues/6941)) ([14503ce](https://github.com/electron-userland/electron-builder/commit/14503ceb99c1a31c54a261a1ae60a34980f36a50))
+
+
+
 # [](https://github.com/electron-userland/electron-builder/compare/v23.1.0...v) (2022-06-17)
 
 
