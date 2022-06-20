@@ -98,6 +98,13 @@ export interface WindowsConfiguration extends PlatformSpecificBuildOptions {
    * @default false
    */
   readonly signDlls?: boolean
+
+  /**
+   * Whether to sign Node addon files. Advanced option.
+   * @see https://github.com/electron-userland/electron-builder/issues/6954
+   * @default false
+   */
+  readonly signNodeFiles?: boolean
 }
 
 export type RequestedExecutionLevel = "asInvoker" | "highestAvailable" | "requireAdministrator"

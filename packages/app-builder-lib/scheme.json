@@ -5975,6 +5975,11 @@
           "description": "Whether to sign DLL files. Advanced option.",
           "type": "boolean"
         },
+        "signNodeFiles": {
+          "default": false,
+          "description": "Whether to sign Node addon files. Advanced option.",
+          "type": "boolean"
+        },
         "signingHashAlgorithms": {
           "anyOf": [
             {

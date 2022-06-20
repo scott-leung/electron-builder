@@ -32,6 +32,7 @@ The top-level [win](configuration.md#Configuration-win) key contains set of opti
 <li><code id="WindowsConfiguration-requestedExecutionLevel">requestedExecutionLevel</code> = <code>asInvoker</code> “asInvoker” | “highestAvailable” | “requireAdministrator” | “undefined” - The <a href="https://msdn.microsoft.com/en-us/library/6ad1fshk.aspx#Anchor_9">security level</a> at which the application requests to be executed. Cannot be specified per target, allowed only in the <code>win</code>.</li>
 <li><code id="WindowsConfiguration-signAndEditExecutable">signAndEditExecutable</code> = <code>true</code> Boolean - Whether to sign and add metadata to executable. Advanced option.</li>
 <li><code id="WindowsConfiguration-signDlls">signDlls</code> = <code>false</code> Boolean - Whether to sign DLL files. Advanced option. See: <a href="https://github.com/electron-userland/electron-builder/issues/3101#issuecomment-404212384">https://github.com/electron-userland/electron-builder/issues/3101#issuecomment-404212384</a></li>
+<li><code id="WindowsConfiguration-signNodeFiles">signNodeFiles</code> = <code>false</code> Boolean - Whether to sign Node addon files. Advanced option. See: <a href="https://github.com/electron-userland/electron-builder/issues/6954">https://github.com/electron-userland/electron-builder/issues/6954</a></li>
 </ul>
 
 <!-- end of generated block -->

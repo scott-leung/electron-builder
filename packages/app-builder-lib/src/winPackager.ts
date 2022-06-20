@@ -351,13 +351,17 @@ export class WinPackager extends PlatformPackager<WindowsConfiguration> {
     return this.platformSpecificBuildOptions.signDlls === true
   }
 
+  private isSignNodeFiles(): boolean {
+    return this.platformSpecificBuildOptions.signNodeFiles === true
+  }
+
   protected createTransformerForExtraFiles(packContext: AfterPackContext): FileTransformer | null {
     if (this.platformSpecificBuildOptions.signAndEditExecutable === false) {
       return null
     }
 
     return file => {
-      if (file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll"))) {
+      if (file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll")) || (this.isSignNodeFiles() && file.endsWith(".node"))) {
         const parentDir = path.dirname(file)
         if (parentDir !== packContext.appOutDir) {
           return new CopyFileTransformer(file => this.sign(file))
@@ -382,7 +386,7 @@ export class WinPackager extends PlatformPackager<WindowsConfiguration> {
           path.basename(exeFileName, ".exe"),
           this.platformSpecificBuildOptions.requestedExecutionLevel
         )
-      } else if (file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll"))) {
+      } else if (file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll")) || (this.isSignNodeFiles() && file.endsWith(".node"))) {
         return this.sign(path.join(packContext.appOutDir, file))
       }
       return null
@@ -394,7 +398,10 @@ export class WinPackager extends PlatformPackager<WindowsConfiguration> {
 
     const signPromise = (filepath: string[]) => {
       const outDir = path.join(packContext.appOutDir, ...filepath)
-      return walk(outDir, (file, stat) => stat.isDirectory() || file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll")))
+      return walk(
+        outDir,
+        (file, stat) => stat.isDirectory() || file.endsWith(".exe") || (this.isSignDlls() && file.endsWith(".dll")) || (this.isSignNodeFiles() && file.endsWith(".node"))
+      )
     }
     const filesToSign = await Promise.all([signPromise(["resources", "app.asar.unpacked"]), signPromise(["swiftshader"])])
     await BluebirdPromise.map(filesToSign.flat(1), file => this.sign(file), { concurrency: 4 })
